@@ -1,1 +1,59 @@
+#include <iostream>
+#include <iomanip>
+#include <cmath>
+#include <numbers>
 
+using namespace std;
+
+// Checks whether x belongs to the function domain
+// Parameter: x - input value
+// Returns: true if x is valid, otherwise false
+bool validate_x(double x) {
+    return x != -11.0 && x != -8.0 && x != 3.0;
+}
+
+// Calculates the mathematical expression for variant 178
+// Parameter: x - input value
+// Returns: calculated result as double
+double f(double x) {
+    return cos(15.0 / 59.0)
+        - ((16.0 * numbers::pi) / (65.0 * numbers::e))
+        * (5.0 / ((x + 8.0) * (x - 3.0)))
+        - 4.0 * sin(x + 7.0)
+        - (11.0 / (x + 11.0));
+}
+
+int main() {
+    cout << "Author: Mykyta Popelar (Group ITK-11)\n";
+    cout << "Task: Calculation of mathematical expression for variant 178\n\n";
+
+    cout << "Enter x (forbidden values: -11, -8, 3): ";
+
+    double x = 0.0;
+
+    if (!(cin >> x)) {
+        cout << "\nwrong input\n";
+    }
+    else {
+        cout << "\n***** do calculations ... ";
+
+        bool valid = validate_x(x);
+        double result = 0.0;
+
+        if (valid) {
+            result = f(x);
+        }
+
+        cout << "done\n";
+        cout << fixed << setprecision(5) << "for x = " << x << "\n";
+
+        if (valid) {
+            cout << setprecision(9) << "result = " << result << "\n";
+        }
+        else {
+            cout << "result = undefined\n";
+        }
+    }
+
+    return 0;
+}
